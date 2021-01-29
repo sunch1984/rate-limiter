@@ -21,7 +21,7 @@ public class RequestThrottleFilter implements Filter {
 			throws IOException, ServletException {
 
 		HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-		if (!rateLimiter.tryAcquire(1)) {
+		if (rateLimiter.tryAcquire(1)) {
 			chain.doFilter(request, response);
 		} else {
 			httpServletResponse.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
