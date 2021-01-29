@@ -14,7 +14,7 @@ import com.google.common.util.concurrent.RateLimiter;
 @Component
 public class RequestThrottleFilter implements Filter {
 
-	final RateLimiter rateLimiter = RateLimiter.create(2);
+	final RateLimiter rateLimiter = RateLimiter.create(100);
 
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
